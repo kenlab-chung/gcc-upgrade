@@ -3,6 +3,7 @@ ubuntu gcc g++升级方法
 
 ## 1、添加源
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+
 sudo apt-get update
 
 ## 2、安装 gcc-6、g++-6
@@ -13,27 +14,39 @@ sudo apt-get install gcc-6 g++-6
 我们查看系统当前使用的 gcc，发现是个符号链接：
 
 ll /usr/bin/gcc
+
 lrwxrwxrwx 1 root root 5 Nov 16 16:49 gcc -> gcc-5
+
 g++ 也是：
 
 ll /usr/bin/g++
+
 lrwxrwxrwx 1 root root 5 Nov 16 16:49 g++ -> g++-5
+
 所以我们重定向 gcc 链接到 gcc-6 即可：
 
 cd /usr/bin
+
 sudo sudo rm gcc
+
 sudo ln -s gcc-6 gcc
 
 同样 g++ 重新链接到 g++-6：
+
 sudo rm g++
+
 sudo ln -s g++-6 g++
 
 重新查看下 gcc、g++ 的链接：
+
 ll /usr/bin/gcc
+
 lrwxrwxrwx 1 root root 5 Nov 16 16:49 gcc -> gcc-6
 
 ll /usr/bin/g++
+
 lrwxrwxrwx 1 root root 5 Nov 16 16:49 g++ -> g++-6
+
 顺便查看下 gcc、g++ 的版本：
 
 gcc --version
